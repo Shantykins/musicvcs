@@ -123,7 +123,7 @@ Makes the specified branch mix the new main mix. Only the designated mix master 
 - **Multiple Branches**: Create as many branch mixes as needed to experiment with different arrangements
 - **Git Integration**: All changes are tracked with Git, allowing for standard Git operations
 
-## Sample Workflow: Cherry Wine Project
+## Sample Workflow: Vocal Recording Project
 
 Here's a detailed workflow example showing how to use MusicVCS for a vocal recording project:
 
@@ -131,21 +131,21 @@ Here's a detailed workflow example showing how to use MusicVCS for a vocal recor
 
 ```bash
 # Initialize a new project
-mkdir cherry_wine
-cd cherry_wine
+mkdir my_project
+cd my_project
 musicvcs -path=. init
 
 # Add vocal tracks
-musicvcs -path=. add-track -file=/path/to/Cherry_Wine_Lead_Vocals.wav -type=vocals
+musicvcs -path=. add-track -file=/path/to/Lead_Vocals.wav -type=vocals
 # Note the returned track ID: b4f85868-2d3b-49cf-acc8-78aa0d497ecf
 
-musicvcs -path=. add-track -file=/path/to/Cherry_Wine_Harmony1.wav -type=vocals
+musicvcs -path=. add-track -file=/path/to/Harmony1.wav -type=vocals
 # Note the returned track ID: 785f171e-f572-4675-92fa-cc28e9d4890c
 
-musicvcs -path=. add-track -file=/path/to/Cherry_Wine_Harmony2.wav -type=vocals
+musicvcs -path=. add-track -file=/path/to/Harmony2.wav -type=vocals
 # Note the returned track ID: 52438fd6-0824-4351-8597-34f842496cf4
 
-musicvcs -path=. add-track -file=/path/to/Cherry_Wine_Harmony3.wav -type=vocals
+musicvcs -path=. add-track -file=/path/to/Harmony3.wav -type=vocals
 # Note the returned track ID: c2e5b17e-718b-49a0-b917-8da0ed20a9cc
 ```
 
@@ -153,10 +153,10 @@ musicvcs -path=. add-track -file=/path/to/Cherry_Wine_Harmony3.wav -type=vocals
 
 ```bash
 # Create a main mix branch
-musicvcs -path=. create-branch -name=mix-master -desc="Master mix for Cherry Wine"
+musicvcs -path=. create-branch -name=mix-master -desc="Master mix for song_title"
 
 # Create a vocals-focused mix branch
-musicvcs -path=. create-branch -name=vocals -desc="Vocals mix for Cherry Wine"
+musicvcs -path=. create-branch -name=vocals -desc="Vocals mix for song_title"
 
 # Add tracks to the vocals branch
 musicvcs -path=. add-to-branch -branch=vocals -track=b4f85868-2d3b-49cf-acc8-78aa0d497ecf
@@ -178,13 +178,13 @@ musicvcs -path=. list-branches
 
 ```bash
 # Add processing notes to vocals branch
-echo "Original vocal notes - modified with extra reverb and delay" > branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt
-git add branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt
+echo "Original vocal notes - modified with extra reverb and delay" > branch-mix/vocals/Lead_Vocals_notes.txt
+git add branch-mix/vocals/Lead_Vocals_notes.txt
 git commit -m "Add reverb and delay processing notes to vocals branch"
 
 # Add different processing notes to mix-master branch
-echo "Standard lead vocals with minimal processing" > branch-mix/mix-master/Cherry_Wine_Lead_Vocals_notes.txt
-git add branch-mix/mix-master/Cherry_Wine_Lead_Vocals_notes.txt
+echo "Standard lead vocals with minimal processing" > branch-mix/mix-master/Lead_Vocals_notes.txt
+git add branch-mix/mix-master/Lead_Vocals_notes.txt
 git commit -m "Add standard processing notes to mix-master branch"
 ```
 
@@ -221,7 +221,7 @@ git checkout main
 
 # Verify the current state
 ls -la branch-mix/vocals/
-cat branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt
+cat branch-mix/vocals/Lead_Vocals_notes.txt
 ```
 
 ### 6. Making Updates and Comparing Versions
@@ -230,15 +230,15 @@ After making changes to a branch, you can compare different versions:
 
 ```bash
 # Make changes to the vocals branch
-echo "Updated vocal processing: more reverb, less delay" > branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt
-git add branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt
+echo "Updated vocal processing: more reverb, less delay" > branch-mix/vocals/Lead_Vocals_notes.txt
+git add branch-mix/vocals/Lead_Vocals_notes.txt
 git commit -m "Update vocal processing settings"
 
 # Compare different branches
-diff branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt branch-mix/mix-master/Cherry_Wine_Lead_Vocals_notes.txt
+diff branch-mix/vocals/Lead_Vocals_notes.txt branch-mix/mix-master/Lead_Vocals_notes.txt
 
 # Compare with previous version of the same file
-git diff HEAD~1 HEAD -- branch-mix/vocals/Cherry_Wine_Lead_Vocals_notes.txt
+git diff HEAD~1 HEAD -- branch-mix/vocals/Lead_Vocals_notes.txt
 ```
 
 This workflow demonstrates how MusicVCS gives you the power to manage different versions of your music project, try alternative processing approaches, and maintain a complete history of your work.
